@@ -17,7 +17,13 @@ var path = require('path');
 
 var useEmulator = (process.env.NODE_ENV == 'development');
 
-var connector = useEmulator ? new builder.ChatConnector() : new botbuilder_azure.BotServiceConnector({
+
+var connector = new builder.ConsoleConnector().listen();
+var bot = new builder.UniversalBot(connector, function (session) {
+    session.send("Hi... I'm the alarm bot sample. I can set new alarms or delete existing ones.");
+});
+
+/*var connector = useEmulator ? new builder.ChatConnector() : new botbuilder_azure.BotServiceConnector({
     appId: process.env['MicrosoftAppId'],
     appPassword: process.env['MicrosoftAppPassword'],
     stateEndpoint: process.env['BotStateEndpoint'],
@@ -25,7 +31,7 @@ var connector = useEmulator ? new builder.ChatConnector() : new botbuilder_azure
 });
 
 var bot = new builder.UniversalBot(connector);
-bot.localePath(path.join(__dirname, './locale'));
+bot.localePath(path.join(__dirname, './locale'));*/
 
 var LuisModel = process.env.model || 'https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/a4e76ead-6a36-4295-bbf5-ad248d6459c7?subscription-key=6015562483a6496aa4b663bcf624f535&spellCheck=true&verbose=true&timezoneOffset=-6.0&q=';
 bot.recognizer(new builder.LuisRecognizer(LuisModel));
