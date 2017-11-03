@@ -29,16 +29,15 @@ var luisAPIHostName = process.env.LuisAPIHostName || 'westus.api.cognitive.micro
 const LuisModelUrl = 'https://' + luisAPIHostName + '/luis/v1/application?id=' + luisAppId + '&subscription-key=' + luisAPIKey;
 
 // Main dialog with LUIS
-var greeting_recognizer = new builder.LuisRecognizer(LuisModelUrl);
-var greeting_intents = new builder.IntentDialog({ recognizers: [greeting_recognizer] })
-/*
-.matches('<yourIntent>')... See details at http://docs.botframework.com/builder/node/guides/understanding-natural-language/
-*/
-.onDefault((session) => {
-    session.send('Sorry, I did not understand \'%s\'.', session.message.text);
-});
+var recognizer = new builder.LuisRecognizer(LuisModelUrl);
+var intents = new builder.IntentDialog({ recognizers: [recognizer] })
 
-bot.dialog('/', greeting_intents);    
+intents.matches('AskAboutMe', 'yourself');
+intents.onDefault('/confused');
+
+bot.dialog('/', intents);
+
+bot.dialog('yourself', require('./yourself'));
 
 if (useEmulator) {
     var restify = require('restify');
@@ -50,4 +49,3 @@ if (useEmulator) {
 } else {
     module.exports = { default: connector.listen() }
 }
-
