@@ -29,8 +29,38 @@ bot.localePath(path.join(__dirname, './locale'));
 
 var LuisModel = process.env.model || 'https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/a4e76ead-6a36-4295-bbf5-ad248d6459c7?subscription-key={6015562483a6496aa4b663bcf624f535}&spellCheck=true&verbose=true&timezoneOffset=-6.0&q=';
 bot.recognizer(new builder.LuisRecognizer(LuisModel));
-// Dialog Menu
-bot.dialog('yourself', require('./yourself')).triggerAction({ matches: 'AskAboutMe'});
+// Sample Dialog Code to be replaced later
+bot.dialog('/deleteAlarm', [
+    function (session, args, next) {
+        if (alarmCount() > 0) {
+            // Resolve entities passed from LUIS.
+            var title;
+            var intent = args.intent;
+            var entity = builder.EntityRecognizer.findEntity(intent.entities, 'builtin.alarm.title');
+            if (entity) {
+                // Verify its in our set of alarms.
+                title = builder.EntityRecognizer.findBestMatch(alarms, entity.entity);
+            }
+            
+            // Prompt for alarm name
+            if (!title) {
+                builder.Prompts.choice(session, 'Which alarm would you like to delete?', alarms);
+            } else {
+                next({ response: title });
+            }
+        } else {
+            session.endDialog("No alarms to delete.");
+        }
+    },
+    function (session, results) {
+        delete alarms[results.response.entity];
+        session.endDialog("Deleted the '%s' alarm.", results.response.entity);
+    }
+]).triggerAction({
+    matches: 'AskAboutMe'});
+
+
+
 
 if (useEmulator) {
     var restify = require('restify');
