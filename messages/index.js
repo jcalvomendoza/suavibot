@@ -4,6 +4,12 @@ natural language support to a bot.
 For a complete walkthrough of creating this type of bot see the article at
 https://aka.ms/abs-node-luis
 -----------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------
+This template demonstrates how to use an IntentDialog with a LuisRecognizer to add 
+natural language support to a bot. 
+For a complete walkthrough of creating this type of bot see the article at
+https://aka.ms/abs-node-luis
+-----------------------------------------------------------------------------*/
 "use strict";
 var builder = require("botbuilder");
 var botbuilder_azure = require("botbuilder-azure");
@@ -21,23 +27,10 @@ var connector = useEmulator ? new builder.ChatConnector() : new botbuilder_azure
 var bot = new builder.UniversalBot(connector);
 bot.localePath(path.join(__dirname, './locale'));
 
-// Make sure you add code to validate these fields
-var luisAppId = process.env.LuisAppId;
-var luisAPIKey = process.env.LuisAPIKey;
-var luisAPIHostName = process.env.LuisAPIHostName || 'westus.api.cognitive.microsoft.com';
-
-const LuisModelUrl = 'https://' + luisAPIHostName + '/luis/v1/application?id=' + luisAppId + '&subscription-key=' + luisAPIKey;
-
-// Main dialog with LUIS
-var recognizer = new builder.LuisRecognizer(LuisModelUrl);
-var intents = new builder.IntentDialog({ recognizers: [recognizer] })
-
-intents.matches('AskAboutMe', 'yourself');
-intents.onDefault('/confused');
-
-bot.dialog('/', intents);
-
-bot.dialog('yourself', require('./yourself'));
+var LuisModel = process.env.model || 'https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/a4e76ead-6a36-4295-bbf5-ad248d6459c7?subscription-key={6015562483a6496aa4b663bcf624f535}&spellCheck=true&verbose=true&timezoneOffset=-6.0&q=';
+bot.recognizer(new builder.LuisRecognizer(LuisModel));
+// Dialog Menu
+bot.dialog('yourself', require('./yourself')).triggerAction({ matches: 'AskAboutMe'});
 
 if (useEmulator) {
     var restify = require('restify');
