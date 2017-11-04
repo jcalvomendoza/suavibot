@@ -35,10 +35,11 @@ var greeting_intents = new builder.IntentDialog({ recognizers: [greeting_recogni
 .matches('<yourIntent>')... See details at http://docs.botframework.com/builder/node/guides/understanding-natural-language/
 */
 .onDefault((session) => {
-    session.send('Sorry, \'%s\' is the stupidest thing I\'ve heard', session.message.text);
+    session.send('Sorry, \'%s\' is the stupidest thing I\'ve heard.', session.message.text);
 });
 
-bot.dialog('/', greeting_intents);    
+bot.dialog('/', greeting_intents); 
+bot.dialog('yourself', require('./yourself')).triggerAction({ matches : 'yourself'});   
 
 if (useEmulator) {
     var restify = require('restify');
