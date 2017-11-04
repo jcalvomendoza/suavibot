@@ -18,8 +18,10 @@ var path = require('path');
 //var useEmulator = (process.env.NODE_ENV == 'development');
 
 var connector = new builder.ChatConnector({
-    appId: process.env.MICROSOFT_APP_ID || config.get('MICROSOFT_APP_ID'),
-    appPassword: process.env.MICROSOFT_APP_PASSWORD || config.get('MICROSOFT_APP_PASSWORD')
+    appId: process.env['MicrosoftAppId'],
+    appPassword: process.env['MicrosoftAppPassword'],
+    stateEndpoint: process.env['BotStateEndpoint'],
+    openIdMetadata: process.env['BotOpenIdMetadata']
 });
 
 var bot = new builder.UniversalBot(connector);
