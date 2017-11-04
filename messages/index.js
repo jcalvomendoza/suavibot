@@ -39,7 +39,7 @@ var greeting_intents = new builder.IntentDialog({ recognizers: [greeting_recogni
 });
 
 bot.dialog('/', greeting_intents); 
-bot.dialog('yourself', require('./yourself')).triggerAction({ matches : 'yourself'});   
+bot.dialog('yourself', require('./yourself')).triggerAction({ matches : 'AskAboutMe'});   
 
 if (useEmulator) {
     var restify = require('restify');
