@@ -33,13 +33,14 @@ var greeting_recognizer = new builder.LuisRecognizer(LuisModel);
 var greeting_intents = new builder.IntentDialog({ recognizers: [greeting_recognizer] })
 /*
 .matches('<yourIntent>')... See details at http://docs.botframework.com/builder/node/guides/understanding-natural-language/
-*/
+
 .onDefault((session) => {
     session.send('Sorry, \'%s\' is the stupidest thing I\'ve heard.', session.message.text);
-});
-
+});*/
 bot.dialog('/', greeting_intents); 
-bot.dialog('yourself', require('./yourself')).triggerAction({ matches : 'AskAboutMe'});   
+dialog.matches('AskAboutMe', '/yourself');
+dialog.onDefault(builder.DialogAction.send('Sorry, \'%s\' is the stupidest thing I\'ve heard.', session.message.text));
+//bot.dialog('yourself', require('./yourself')).triggerAction({ matches : 'AskAboutMe'});   
 
 if (useEmulator) {
     var restify = require('restify');
