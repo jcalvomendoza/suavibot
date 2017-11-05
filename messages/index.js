@@ -39,6 +39,21 @@ var greeting_intents = new builder.IntentDialog({ recognizers: [greeting_recogni
 });*/
 bot.dialog('/', greeting_intents); 
 dialog.matches('AskAboutMe', '/yourself');
+dialog.matches('AskAboutMe', [
+    function (session) {
+          session.beginDialog('/yourself');
+    }
+]);
+bot.dialog('/yourself', [
+    function (session) {
+        builder.Prompts.text(session, 'Hi! What is your name?');
+    },
+    // Step 2
+    function (session, results) {
+        session.endDialog(`Hello ${results.response}!`);
+    }
+]);
+
 dialog.onDefault(builder.DialogAction.send('Sorry, \'%s\' is the stupidest thing I\'ve heard.', session.message.text));
 //bot.dialog('yourself', require('./yourself')).triggerAction({ matches : 'AskAboutMe'});   
 
