@@ -59,7 +59,15 @@ bot.dialog('AboutMe', [
     }]).triggerAction({matches: 'AskAboutMe'});
 
 
-
+    bot.dialog('AboutAge', [
+        function (session) {
+            session.send('I\'m 28 years old.');
+            session.sendTyping();
+            setTimeout(function(){
+            session.send('I feel younger at heart, but definitely older on weekends though.');
+            }, 5000);
+        }
+        ]).triggerAction({matches: 'AskAge'});
 
 
 //**********************************************************************************************************************************************//
@@ -83,7 +91,7 @@ bot.dialog('AboutSpain', [
 
 
 //**********************************************************************************************************************************************//
-//THIS DIALOG IS ABOUT MY BASIC LIFE BACKGROUND
+//THIS DIALOG IS ABOUT MY EDUCATION
 bot.dialog('AboutEducation', [
     function (session) {
         session.sendTyping();
@@ -113,8 +121,6 @@ bot.dialog('AboutEducation', [
 
 
 
-
-
 //**********************************************************************************************************************************************//
 //THIS DIALOG IS ABOUT MY WORK AND WORK EXPERIENCE//
 bot.dialog('AboutWork', [
@@ -124,7 +130,7 @@ bot.dialog('AboutWork', [
     }]).triggerAction({matches: 'AskAboutWork'});
 
     //THIS DIALOG IS ABOUT MY ORDERING EXPERIENCE//
-    bot.dialog('AboutProductManagement', [
+    bot.dialog('AboutOrdering', [
         function (session) {
             session.sendTyping();
             setTimeout(function(){
@@ -175,16 +181,114 @@ bot.dialog('AboutWork', [
         }
     ]).triggerAction({matches: 'AskAboutOrdering'});
 
+    //THIS DIALOG IS ABOUT MY ORDERING EXPERIENCE//
+    bot.dialog('AboutDelivery', [
+        function (session) {
+            session.sendTyping();
+            setTimeout(function(){
+                session.send('I was the Delivery Experience Product Manager for almost 2 years.');
+                }, 3000);
+            setTimeout(function(){
+                session.sendTyping();
+                }, 3001);
+            setTimeout(function(){
+                session.send('One of our big deliverables was, well . . . delivery estimates on our site.');
+                }, 5000);
+            setTimeout(function(){
+                session.sendTyping();
+                }, 5001);
+            setTimeout(function(){
+                session.send('Sounds really basic, but it\'s not really when you have a complex delivery network aimed at achieving next-day delivery, but rife with exceptions for hazards and other items regulated for transport.');
+                }, 8000);
+            setTimeout(function(){
+                session.sendTyping();
+                }, 8001);
+            setTimeout(function(){
+                session.send('But what I\'m really proud of is helping create a score-based algorithm that will consider days to delivery, delivery time, delivery cost to the company and the customer, number of packages and more to make the best shipping decision.' );
+                }, 12000);
+            setTimeout(function(){
+                session.sendTyping();
+                }, 12001);
+            setTimeout(function(){
+                session.send('Most parameters are set to replicate today\'s outcomes - but our model is flexible enough to adapt to changes overnight, say a rate hike by UPS but not FedEx. But, even cooler, to eventually consider factors such as real-time fulfillment center work-in-process, to determine the best fulfillment center to fill from and shipping method.' );
+                }, 18000);
+            setTimeout(function(){
+                session.sendTyping();
+                }, 18001);
+            setTimeout(function(){
+                session.send('It\'s hard to ever look at e-commerce the same way now.' );
+                }, 20000);
+        }
+    ]).triggerAction({matches: 'AskAboutDelivery'});
 
-bot.dialog('AboutAge', [
+
+//**********************************************************************************************************************************************//
+//THIS DIALOG IS ABOUT MY HOBBIES//
+bot.dialog('AboutHobbies', [
     function (session) {
-        session.send('I\'m 28 years old.');
-        session.sendTyping();
+        session.send('I have more hobbies than I have time for.');
         setTimeout(function(){
-        session.send('I feel younger at heart, but definitely older on weekends though.');
-        }, 5000);
-    }
-    ]).triggerAction({matches: 'AskAge'});
+            session.sendTyping();
+            }, 1000);
+        setTimeout(function(){
+            session.send('I love hockey. I like to run. I try to keep my French, German, and Italian up to snuff, I\'m a film fanatic, I dabble in photography, and try to regularly visit the Chicago Cultural Center as well as the Art Institute.');
+            }, 5000);
+    }]).triggerAction({matches: 'AskAboutHobbies'});
+
+    //THIS DIALOG IS ABOUT HOCKEY//
+    bot.dialog('AboutHockey', [
+        function (session) {
+            session.sendTyping();
+            setTimeout(function(){
+                session.send('I did not see snow until I was 19, so naturally, hockey was a perfect fit. My 5\'6\'\' stature was also a plus.');
+                }, 3000);
+            setTimeout(function(){
+                session.sendTyping();
+                }, 3001);
+            setTimeout(function(){
+                session.send('That\'s why I think I love hockey so much though. Because I never saw myself playing it, because I thought I was too old to ever pick up a stick.');
+                }, 6000);
+            setTimeout(function(){
+                session.sendTyping();
+                }, 6001);
+            setTimeout(function(){
+                session.send('Yet, here I am, and so is my tailbone. Doing the unexpected is so rewarding.');
+                }, 6000);
+        }]).triggerAction({matches: 'AskAboutHockey'});
+
+    //THIS DIALOG IS ABOUT FILM//
+    bot.dialog('AboutFilm', [
+        function (session) {
+            session.sendTyping();
+            setTimeout(function(){
+                session.send('Like other media, I love how films can memorialize a feeling. They can be played and re-played and with them memories lived and re-lived, and feelings felt and felt again.');
+                }, 5000);
+            setTimeout(function(){
+                session.sendTyping();
+                }, 5001);
+            setTimeout(function(){
+                session.send('That\'s why my favorite films are slow and uneventful, but captivating in the beauty with which they capture the wonders of daily life.');
+                }, 10000);
+            setTimeout(function(){
+                session.sendTyping();
+                }, 10001);
+            setTimeout(function(){
+                session.send('Before the reality that my parents could not support me beyond my collegiate ambitions, I always wanted to be an actor.');
+                }, 15000);
+            setTimeout(function(){
+                session.sendTyping();
+                }, 15001);
+            setTimeout(function(){
+                session.send('It felt like the most direct path between me and the feelings of others.');
+                }, 17000);
+            setTimeout(function(){
+                session.sendTyping();
+                }, 17001);
+            setTimeout(function(){
+                session.send('I reach people through products and experiences, today - the path is not as direct, but it can be as rewarding.');
+                }, 17000);
+        }]).triggerAction({matches: 'AskAboutFilm'});
+
 
 
 if (useEmulator) {
