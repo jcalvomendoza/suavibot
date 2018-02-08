@@ -63,6 +63,13 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
         session.send(String.fromCharCode(0xD83D, 0xDE01));
         }, 8000);
 })
+.matches('askAboutFeeling', (session) => {
+    session.send('I\'m well!');
+    session.sendTyping();
+    setTimeout(function(){
+    session.send('Excited to be talking to you.');
+    }, 3000);
+})
 .matches('askAge', (session) => {
     session.send('I\'m 28 years old.');
     session.sendTyping();
@@ -209,7 +216,7 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
         session.sendTyping();
         }, 3001);
     setTimeout(function(){
-        session.send('And I\'m fluent in French and conversational in German and Italian.');
+        session.send('I\'m fluent in French and conversational in German and Italian.');
         }, 6000);
 })
 .matches('askAboutHockey', (session) => {
@@ -258,10 +265,20 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
         }, 17001);
     setTimeout(function(){
         session.send('I reach people through products and experiences, today - the path is not as direct, but it can be as rewarding.');
+        setTimeout(function(){
+            session.sendTyping();
+            }, 17001);
+        setTimeout(function(){
+            session.send('I reach people through products and experiences, today - the path is not as direct, but it can be as rewarding.');
+            }, 17000);
         }, 17000);
 })
 .matches('Help', (session) => {
-    session.send('You reached Help intent, you said \'%s\'.', session.message.text);
+    session.send('I can tell you about my work experience, education, upbringing, hobbies, passions, and the like.');
+    session.sendTyping();
+    setTimeout(function(){
+        session.send('Alternatively you can click on the contact link on the top right and reach me through any number of media.');
+        }, 3000);
 })
 .matches('Cancel', (session) => {
     session.send('You reached Cancel intent, you said \'%s\'.', session.message.text);
