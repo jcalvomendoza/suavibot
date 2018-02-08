@@ -198,6 +198,20 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
         session.send('I love hockey. I like to run. I try to keep my French, German, and Italian up to snuff, I\'m a film fanatic, I dabble in photography, and try to regularly visit the Chicago Cultural Center as well as the Art Institute.');
         }, 5000);
 })
+.matches('askAboutLanguages', (session) => {
+    setTimeout(function(){
+        session.sendTyping();
+        }, 1);
+    setTimeout(function(){
+        session.send('Spanish is my first language and I\'m fluent in English, though I might have already given that away.');
+        }, 3000);
+    setTimeout(function(){
+        session.sendTyping();
+        }, 3001);
+    setTimeout(function(){
+        session.send('And I\'m fluent in French and conversational in German and Italian.');
+        }, 6000);
+})
 .matches('askAboutHockey', (session) => {
     session.sendTyping();
     setTimeout(function(){
