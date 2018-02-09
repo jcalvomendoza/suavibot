@@ -159,6 +159,43 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
     setTimeout(function(){
         session.send('Really, cool stuff, in my opinion.');
         }, 23000);
+        
+})
+.matches('askAboutOrderContinuity', (session) => {
+    session.sendTyping();
+    setTimeout(function(){
+        session.send('For the longest time, we didn\'t require a login for users to place orders. We used cookie values to persist the cart over time.');
+        }, 3000);
+    setTimeout(function(){
+        session.send('So carts were tied to a browser, not a login.');
+        }, 4000);
+    setTimeout(function(){
+        session.sendTyping();
+        }, 4001);
+    setTimeout(function(){
+        session.send('But as customers begin to interact with us through multiple devices, that construct has become antiquated.');
+        }, 6000);
+    setTimeout(function(){
+        session.sendTyping();
+        }, 6001);
+    setTimeout(function(){
+        session.sendTyping();
+        }, 9001);
+    setTimeout(function(){
+        session.send('The problem is that our biggest (and most bureaucratic) customers have incorporated this construct into their workflows as a way to circumvent the fact that we do not support company-wide logins or accounts per se.');
+        }, 12000);
+    setTimeout(function(){
+        session.sendTyping();
+        }, 12001);
+    setTimeout(function(){
+        session.send('And it is hard to differentiate these users from those who share a login to build a common cart, in both cases we observe a single login, multiple orders, and multiple devices.');
+        }, 15000);
+    setTimeout(function(){
+        session.sendTyping();
+        }, 15001);
+    setTimeout(function(){
+        session.send('I wanted to preserve the experience from an important and vocal miniroty without depriving the majority of our customers from an experience that is standard and expected today.');
+        }, 18000);
 })
 .matches('askAboutDelivery', (session) => {
     session.sendTyping();
@@ -272,6 +309,81 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
             session.send('I reach people through products and experiences, today - the path is not as direct, but it can be as rewarding.');
             }, 17000);
         }, 17000);
+})
+.matches('askAboutSkills', (session) => {
+    session.sendTyping();
+    setTimeout(function(){
+        session.send('I\'m well-versed in the entire Microsoft Office suite, but these days, that\'s like saying I know how to use a cellphone.');
+        }, 5000);
+    setTimeout(function(){
+        session.sendTyping();
+        }, 5001);
+    setTimeout(function(){
+        session.send('I also use most programs from the Adobe Suite regularly.');
+        }, 8000);
+    setTimeout(function(){
+        session.sendTyping();
+        }, 8001);
+    setTimeout(function(){
+        session.send('I use Adobe Illustrator the most, but also rely heavily on InDesign, After Effects, and Captivate.');
+        }, 11000);
+    setTimeout(function(){
+        session.sendTyping();
+        }, 11001);
+    setTimeout(function(){
+        session.send('I use Neo4J graph databases and the Cypher Query Language daily, and SQL on occasion.');
+        }, 15000);
+    setTimeout(function(){
+        session.sendTyping();
+        }, 15001);
+    setTimeout(function(){
+        session.send('I do data analysis with R.');
+        }, 17000);
+    setTimeout(function(){
+        session.sendTyping();
+        }, 17001);
+    setTimeout(function(){
+        session.send('And outside of work, I user Framer to prototype interactive designs and Javascript to create this site or this bot.');
+        }, 20000);
+    setTimeout(function(){
+        session.sendTyping();
+        }, 20001);
+    setTimeout(function(){
+        session.send('You can ask me to elaborate on any of these, if you\'d like.');
+        }, 23000);
+})
+.matches('askAboutGraphDatabase', (session) => {
+    session.sendTyping();
+    setTimeout(function(){
+        session.send('I use Neo4j and CQL to inform and iterate on the design of the products and features I manage.');
+        }, 3000);
+    setTimeout(function(){
+        session.sendTyping();
+        }, 3001);
+    setTimeout(function(){
+        session.send('For example, what was the marginal effect of an additional day of lead time on conversion rates for any given part number, when I worked on bringing transparent lead times, based on supplier information to our site.');
+        }, 9000);
+    setTimeout(function(){
+        session.sendTyping();
+        }, 9001);
+    setTimeout(function(){
+        session.sendTyping();
+        }, 12001);
+    setTimeout(function(){
+        session.send('Or differentiating between users who share logins in order to have a common cart from users who share a login to have a common order history, but build orders separately, based on interaction patterns  originating from different devices tied to the users\' login.');
+        }, 16000);
+    setTimeout(function(){
+        session.sendTyping();
+        }, 16001);
+    setTimeout(function(){
+        session.send('Why that distinction was even important, is a bit of an aside, and was tied to a change to push the active cart to all devices where the user was logged in, something we called \'Order Continuity.\'');
+        }, 20000);
+    setTimeout(function(){
+        session.sendTyping();
+        }, 20001);
+    setTimeout(function(){
+        session.send('And why our site didn\'t already work like that, is also a bit tangential, but you can ask me about it if you\'re curious.');
+        }, 22000);
 })
 .matches('Help', (session) => {
     session.send('I can tell you about my work experience, education, upbringing, hobbies, passions, and the like.');
