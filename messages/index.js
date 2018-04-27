@@ -159,7 +159,39 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
     setTimeout(function(){
         session.send('Really, cool stuff, in my opinion.');
         }, 23000);
-        
+    setTimeout(function(){
+        session.sendTyping();
+        }, 23001);
+    setTimeout(function(){
+        session.send('Also related to Ordering was my work on Order History.');
+        }, 25000);
+})
+.matches('askAboutOrderHistory', (session) => {
+    session.sendTyping();
+    setTimeout(function(){
+        session.send('Several years ago, we re-designed the Order History page');
+        }, 3000);
+    setTimeout(function(){
+        session.send('I managed the launch of the feature.');
+        }, 4000);
+    setTimeout(function(){
+        session.sendTyping();
+        }, 4001);
+    setTimeout(function(){
+        session.send('But more rewarding, however, was working to develop very powerful search features within Order History, particularly searching by product family, name, or number.');
+        }, 7000);
+    setTimeout(function(){
+        session.sendTyping();
+        }, 7001);
+    setTimeout(function(){
+        session.send('As much as we like to think of our business as a non-repeat purchase one, the truth is our customers operate expensive hardware with durable lives of decades. Ordering the same or similar parts over and over is extremely common.');
+        }, 12000);
+    setTimeout(function(){
+        session.sendTyping();
+        }, 12001);
+    setTimeout(function(){
+        session.send('This work was a fabulous stepping stone to some of my later work supporting complex ordering flows. Imagine being able to type \'hex nut\' and finding that one nut you ordered 5 years ago and adding it to your cart with a single click.');
+        }, 17000);
 })
 .matches('askAboutOrderContinuity', (session) => {
     session.sendTyping();
@@ -233,6 +265,30 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
         session.send('It\'s hard to ever look at e-commerce the same way now.' );
         }, 20000);
 })
+.matches('askAboutInternalApplications', (session) => {
+    session.sendTyping();
+    setTimeout(function(){
+        session.send('Managing software that automated the entry of e-mail orders into our order processing system was my first product management role.');
+        }, 5000);
+    setTimeout(function(){
+        session.sendTyping();
+        }, 3001);
+    setTimeout(function(){
+        session.send('I came in halfway and my goal was not to get the software built but rather to improve on it.');
+        }, 7000);
+    setTimeout(function(){
+        session.sendTyping();
+        }, 7001);
+    setTimeout(function(){
+        session.send('At the time 11% of orders e-mailed were processed by our system without the need of a human touch. By the time I left, the number was 30%');
+        }, 9000);
+    setTimeout(function(){
+        session.sendTyping();
+        }, 9001);
+    setTimeout(function(){
+        session.send('I loved this project because it required careful analysis of document and e-mail patterns and because we had to critically juggle tradeoffs throughout - if we loosen or change this constraint in the software\'s business logic, how many instances do we improve and how many do we make worse as a result.' );
+        }, 13000);
+})
 .matches('askAboutHobbies', (session) => {
     session.send('I have more hobbies than I have time for.');
     setTimeout(function(){
@@ -271,7 +327,7 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
         session.sendTyping();
         }, 6001);
     setTimeout(function(){
-        session.send('Yet, here I am, and so is my tailbone. Doing the unexpected is so rewarding.');
+        session.send('Yet, here I am, and so is my tailbone. Doing the new and unexpected is so rewarding.');
         }, 6000);
 })
 .matches('askAboutFilm', (session) => {
@@ -283,7 +339,7 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
         session.sendTyping();
         }, 5001);
     setTimeout(function(){
-        session.send('That\'s why my favorite films are slow and uneventful, but captivating in the beauty with which they capture the wonders of daily life.');
+        session.send('That\'s why my favorite films are slow and uneventful, but captivating in the beauty with which they capture the wonders of daily life. It\'s one indirect path to develop empathy.');
         }, 10000);
     setTimeout(function(){
         session.sendTyping();
@@ -302,13 +358,7 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
         }, 17001);
     setTimeout(function(){
         session.send('I reach people through products and experiences, today - the path is not as direct, but it can be as rewarding.');
-        setTimeout(function(){
-            session.sendTyping();
-            }, 17001);
-        setTimeout(function(){
-            session.send('I reach people through products and experiences, today - the path is not as direct, but it can be as rewarding.');
-            }, 17000);
-        }, 17000);
+        }, 1900);
 })
 .matches('askAboutSkills', (session) => {
     session.sendTyping();
@@ -343,7 +393,7 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
         session.sendTyping();
         }, 17001);
     setTimeout(function(){
-        session.send('And outside of work, I user Framer to prototype interactive designs and Javascript to create this site or this bot.');
+        session.send('And outside of work, I use Sketch and Framer to prototype interactive designs and Javascript to create this site or this bot.');
         }, 20000);
     setTimeout(function(){
         session.sendTyping();
@@ -384,6 +434,12 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
     setTimeout(function(){
         session.send('And why our site didn\'t already work like that, is also a bit tangential, but you can ask me about it if you\'re curious.');
         }, 22000);
+})
+.matches('askAboutPrototyping', (session) => {
+    session.sendTyping();
+    setTimeout(function(){
+        session.send('Sorry, I\'m still learning how to respond to that. The real Javier can answer it though!');
+        }, 3000);
 })
 .matches('Help', (session) => {
     session.send('I can tell you about my work experience, education, upbringing, hobbies, passions, and the like.');
